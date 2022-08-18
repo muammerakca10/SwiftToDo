@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,10 +32,28 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="CeZ-aD-jcW"/>
+                    <connections>
+                        <segue destination="O1z-Pm-5yu" kind="showDetail" identifier="toAddVC" id="NcN-S8-iuW"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sMG-7U-I1S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1834.7826086956522" y="94.419642857142847"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="JYC-Ir-S1w">
+            <objects>
+                <viewController id="O1z-Pm-5yu" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="45y-02-b8E">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Cpq-ug-bon"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YJZ-fP-76Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2728" y="107"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="leW-QR-SIT">

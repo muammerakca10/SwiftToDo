@@ -11,7 +11,7 @@ class ViewController: UITableViewController {
     
     //@IBOutlet var tableView: UITableView!
     
-    var tasks = ["Go to Gym", "Go to Shopping"]
+    var tasks = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
