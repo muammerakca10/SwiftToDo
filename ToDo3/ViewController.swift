@@ -9,15 +9,17 @@ import UIKit
 
 class ViewController: UITableViewController {
     
-    //@IBOutlet var tableView: UITableView!
-    
     var tasks = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-      
-        //tableView.delegate = self
-        //tableView.dataSource = self
+        
+        navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addButtonTapped))
+        
+    }
+    
+    @objc func addButtonTapped () {
+        performSegue(withIdentifier: "toAddVC", sender: nil)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -31,10 +33,6 @@ class ViewController: UITableViewController {
         
         return cell
     }
-//
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//
-//        print(indexPath)
-//    }
+
 }
 
