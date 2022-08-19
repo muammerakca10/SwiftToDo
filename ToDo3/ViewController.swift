@@ -26,7 +26,11 @@ class ViewController: UITableViewController {
         performSegue(withIdentifier: "toAddVC", sender: nil)
     }
     
-    func getDatas(){
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(getDatas), name: NSNotification.Name(rawValue: "dataSaved"), object: nil)
+    }
+    
+    @objc func getDatas(){
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         let context  = appDelegate.persistentContainer.viewContext
@@ -45,12 +49,14 @@ class ViewController: UITableViewController {
                 if let id = result.value(forKey: "id") as? UUID {
                     ids.append(id)
                 }
-                
             }
+            tableView.reloadData()
         } catch {
             print("Error when data getting")
         }
     }
+    
+    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tasks.count

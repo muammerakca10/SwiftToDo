@@ -49,7 +49,7 @@ class AddViewController: UIViewController {
         let context = appDelegate.persistentContainer.viewContext
         
         let task = NSEntityDescription.insertNewObject(forEntityName: "TaskEntity", into: context)
-        
+        if addTextView.text != "" {
         task.setValue(addTextView.text, forKey: "taskValue")
         task.setValue(UUID(), forKey: "id")
         
@@ -59,9 +59,13 @@ class AddViewController: UIViewController {
         } catch {
             print("Save error")
         }
+        } else {
+            
+        }
         
+        NotificationCenter.default.post(name: NSNotification.Name("dataSaved"), object: nil)
         
-        //self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
         
         self.dismiss(animated: true)
     }
