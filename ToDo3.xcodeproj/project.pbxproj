@@ -14,6 +14,7 @@
 		451C67C628ABBC880005E549 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 451C67C528ABBC880005E549 /* Assets.xcassets */; };
 		451C67C928ABBC880005E549 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 451C67C728ABBC880005E549 /* LaunchScreen.storyboard */; };
 		453DBD9428AE5E1100116735 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453DBD9328AE5E1100116735 /* AddViewController.swift */; };
+		453DBD9728AF74F100116735 /* TestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 453DBD9528AF74F100116735 /* TestModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		451C67C828ABBC880005E549 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		451C67CA28ABBC880005E549 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		453DBD9328AE5E1100116735 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		453DBD9628AF74F100116735 /* TestModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				451C67C528ABBC880005E549 /* Assets.xcassets */,
 				451C67C728ABBC880005E549 /* LaunchScreen.storyboard */,
 				451C67CA28ABBC880005E549 /* Info.plist */,
+				453DBD9528AF74F100116735 /* TestModel.xcdatamodeld */,
 			);
 			path = ToDo3;
 			sourceTree = "<group>";
@@ -142,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				451C67C128ABBC810005E549 /* ViewController.swift in Sources */,
+				453DBD9728AF74F100116735 /* TestModel.xcdatamodeld in Sources */,
 				451C67BD28ABBC810005E549 /* AppDelegate.swift in Sources */,
 				453DBD9428AE5E1100116735 /* AddViewController.swift in Sources */,
 				451C67BF28ABBC810005E549 /* SceneDelegate.swift in Sources */,
@@ -360,6 +364,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		453DBD9528AF74F100116735 /* TestModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				453DBD9628AF74F100116735 /* TestModel.xcdatamodel */,
+			);
+			currentVersion = 453DBD9628AF74F100116735 /* TestModel.xcdatamodel */;
+			path = TestModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 451C67B128ABBC810005E549 /* Project object */;
 }

@@ -44,6 +44,8 @@ class AddViewController: UIViewController {
         NotificationCenter.default.post(name: NSNotification.Name("Data_Saved"), object: nil)
         
         self.navigationController?.popViewController(animated: true)
+        
+        self.dismiss(animated: true)
     }
     
 }
