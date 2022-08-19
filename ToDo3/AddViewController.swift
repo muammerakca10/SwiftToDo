@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class AddViewController: UIViewController {
     
@@ -43,7 +44,24 @@ class AddViewController: UIViewController {
     @IBAction func addButtonTapped(_ sender: Any) {
         NotificationCenter.default.post(name: NSNotification.Name("Data_Saved"), object: nil)
         
-        self.navigationController?.popViewController(animated: true)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let task = NSEntityDescription.insertNewObject(forEntityName: "TaskEntity", into: context)
+        
+        task.setValue(addTextView.text, forKey: "taskValue")
+        task.setValue(UUID(), forKey: "id")
+        
+        do{
+            try context.save()
+            print("kayit edildi")
+        } catch {
+            print("Save error")
+        }
+        
+        
+        //self.navigationController?.popViewController(animated: true)
         
         self.dismiss(animated: true)
     }
