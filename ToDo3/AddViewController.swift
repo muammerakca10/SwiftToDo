@@ -22,9 +22,16 @@ class AddViewController: UIViewController {
         addTextFieldText.textAlignment = NSTextAlignment.left
         addTextFieldText.dataDetectorTypes = .all
         addTextFieldText.isEditable = true
-
         
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(gestureForCloseKeyboard))
+        
+        view.addGestureRecognizer(gestureRecognizer)
     }
+    
+    @objc func gestureForCloseKeyboard(){
+        view.endEditing(true)
+    }
+    
     @IBAction func addButtonTapped(_ sender: Any) {
         NotificationCenter.default.post(name: NSNotification.Name("Data_Saved"), object: nil)
         
