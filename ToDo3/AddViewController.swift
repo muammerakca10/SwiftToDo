@@ -9,23 +9,31 @@ import UIKit
 
 class AddViewController: UIViewController {
     
-    @IBOutlet var addTextFieldText: UITextView!
+    
+    @IBOutlet var addTextView: UITextView!
     
     var newTask = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        addTextFieldText.layer.masksToBounds = true
-        addTextFieldText.layer.cornerRadius = 20.0
-        addTextFieldText.layer.borderWidth = 1
-        addTextFieldText.layer.borderColor = UIColor.blue.cgColor
-        addTextFieldText.textAlignment = NSTextAlignment.left
-        addTextFieldText.dataDetectorTypes = .all
-        addTextFieldText.isEditable = true
+        
         
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(gestureForCloseKeyboard))
         
         view.addGestureRecognizer(gestureRecognizer)
+        
+        addTextViewProperties(textView: addTextView)
+    }
+    
+    func addTextViewProperties(textView: UITextView){
+        
+        textView.layer.masksToBounds = true
+        textView.layer.cornerRadius = 20.0
+        textView.layer.borderWidth = 1
+        textView.layer.borderColor = UIColor.blue.cgColor
+        textView.textAlignment = NSTextAlignment.left
+        textView.dataDetectorTypes = .all
+        textView.isEditable = true
     }
     
     @objc func gestureForCloseKeyboard(){

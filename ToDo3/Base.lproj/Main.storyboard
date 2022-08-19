@@ -80,7 +80,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="es6-No-irA"/>
                     <connections>
-                        <outlet property="addTextFieldText" destination="fQH-Aa-D8D" id="cSv-ZX-Edw"/>
+                        <outlet property="addTextView" destination="fQH-Aa-D8D" id="LbC-Y6-K2V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YJZ-fP-76Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
