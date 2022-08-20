@@ -31,6 +31,10 @@ class ViewController: UITableViewController {
     }
     
     @objc func getDatas(){
+        
+        tasks.removeAll()
+        ids.removeAll()
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         let context  = appDelegate.persistentContainer.viewContext
