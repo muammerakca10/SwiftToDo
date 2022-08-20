@@ -29,7 +29,7 @@ class AddViewController: UIViewController {
         if incomingTask != "" {
             addTextView.text = incomingTask
             addTextView.isOpaque = false
-            saveButton.isEnabled = false
+            addTextView.isEditable = false
             addTextView.layer.borderColor = UIColor.darkGray.cgColor
             taskLabel.text = "Task:"
         } else {
