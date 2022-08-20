@@ -48,9 +48,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DBE-cW-q7Z">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DBE-cW-q7Z">
                                 <rect key="frame" x="163" y="331" width="88" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="d5v-h9-xZh"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Save">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
@@ -59,17 +61,18 @@
                                     <action selector="addButtonTapped:" destination="O1z-Pm-5yu" eventType="touchUpInside" id="tqv-oG-kmg"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fQH-Aa-D8D">
-                                <rect key="frame" x="20" y="168" width="374" height="118"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQH-Aa-D8D">
+                                <rect key="frame" x="20" y="202" width="374" height="118"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="118" id="AXK-gQ-0QI"/>
+                                </constraints>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add New Task" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lxX-eZ-h7U">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Add New Task" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lxX-eZ-h7U">
                                 <rect key="frame" x="112" y="79" width="190" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -77,10 +80,24 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Cpq-ug-bon"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fQH-Aa-D8D" firstAttribute="centerX" secondItem="DBE-cW-q7Z" secondAttribute="centerX" id="6ZU-a7-g6F"/>
+                            <constraint firstItem="fQH-Aa-D8D" firstAttribute="leading" secondItem="Cpq-ug-bon" secondAttribute="leading" constant="20" id="7LP-W1-lpY"/>
+                            <constraint firstItem="lxX-eZ-h7U" firstAttribute="top" secondItem="Cpq-ug-bon" secondAttribute="top" constant="79" id="Anb-bn-m4d"/>
+                            <constraint firstItem="Cpq-ug-bon" firstAttribute="trailing" secondItem="fQH-Aa-D8D" secondAttribute="trailing" constant="20" id="MCO-uL-5eo"/>
+                            <constraint firstItem="fQH-Aa-D8D" firstAttribute="top" secondItem="lxX-eZ-h7U" secondAttribute="bottom" constant="52" id="XZy-LO-Dix"/>
+                            <constraint firstItem="fQH-Aa-D8D" firstAttribute="leading" secondItem="45y-02-b8E" secondAttribute="leadingMargin" id="iFW-5i-h79"/>
+                            <constraint firstItem="DBE-cW-q7Z" firstAttribute="top" secondItem="fQH-Aa-D8D" secondAttribute="bottom" constant="45" id="q8X-0s-k3V"/>
+                            <constraint firstItem="fQH-Aa-D8D" firstAttribute="trailing" secondItem="45y-02-b8E" secondAttribute="trailingMargin" id="t49-aa-YS3"/>
+                            <constraint firstItem="Cpq-ug-bon" firstAttribute="bottom" secondItem="DBE-cW-q7Z" secondAttribute="bottom" constant="427" id="uxS-OH-KIQ"/>
+                            <constraint firstItem="lxX-eZ-h7U" firstAttribute="centerX" secondItem="fQH-Aa-D8D" secondAttribute="centerX" id="v0h-jb-v1N"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="es6-No-irA"/>
                     <connections>
                         <outlet property="addTextView" destination="fQH-Aa-D8D" id="LbC-Y6-K2V"/>
+                        <outlet property="saveButton" destination="DBE-cW-q7Z" id="gNK-9D-nrJ"/>
+                        <outlet property="taskLabel" destination="lxX-eZ-h7U" id="wJK-F9-7K9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YJZ-fP-76Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

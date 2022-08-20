@@ -13,6 +13,9 @@ class ViewController: UITableViewController {
     var tasks = [String]()
     var ids = [UUID]()
     
+    var selectedTask = ""
+    var selectedUUID : UUID?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +26,7 @@ class ViewController: UITableViewController {
     }
     
     @objc func addButtonTapped () {
+        selectedTask = ""
         performSegue(withIdentifier: "toAddVC", sender: nil)
     }
     
@@ -32,8 +36,8 @@ class ViewController: UITableViewController {
     
     @objc func getDatas(){
         
-        tasks.removeAll()
-        ids.removeAll()
+        tasks.removeAll(keepingCapacity: false)
+        ids.removeAll(keepingCapacity: false)
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
@@ -72,6 +76,25 @@ class ViewController: UITableViewController {
         cell.textLabel?.text = tasks[indexPath.row]
         
         return cell
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "toAddVC" {
+            let destinationVC = segue.destination as! AddViewController
+            destinationVC.incomingTask = selectedTask
+            destinationVC.incomingUUID = selectedUUID
+        }
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        selectedTask = tasks[indexPath.row]
+        selectedUUID = ids[indexPath.row]
+        
+        performSegue(withIdentifier: "toAddVC", sender: nil)
     }
 
 }

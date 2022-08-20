@@ -13,17 +13,34 @@ class AddViewController: UIViewController {
     
     @IBOutlet var addTextView: UITextView!
     
+    @IBOutlet var saveButton: UIButton!
+    
+    @IBOutlet var taskLabel: UILabel!
     var newTask = ""
-
+    
+    var incomingTask = ""
+    var incomingUUID : UUID?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addTextViewProperties(textView: addTextView)
+        
+        if incomingTask != "" {
+            addTextView.text = incomingTask
+            addTextView.isOpaque = false
+            saveButton.isEnabled = false
+            addTextView.layer.borderColor = UIColor.darkGray.cgColor
+            taskLabel.text = "Task:"
+        } else {
+            addTextView.text = ""
+        }
         
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(gestureForCloseKeyboard))
         
         view.addGestureRecognizer(gestureRecognizer)
         
-        addTextViewProperties(textView: addTextView)
+        
     }
     
     func addTextViewProperties(textView: UITextView){
@@ -49,16 +66,17 @@ class AddViewController: UIViewController {
         let context = appDelegate.persistentContainer.viewContext
         
         let task = NSEntityDescription.insertNewObject(forEntityName: "TaskEntity", into: context)
-        if addTextView.text != "" {
-        task.setValue(addTextView.text, forKey: "taskValue")
-        task.setValue(UUID(), forKey: "id")
         
-        do{
-            try context.save()
-            print("kayit edildi")
-        } catch {
-            print("Save error")
-        }
+        if addTextView.text != "" {
+            task.setValue(addTextView.text, forKey: "taskValue")
+            task.setValue(UUID(), forKey: "id")
+            
+            do{
+                try context.save()
+                print("kayit edildi")
+            } catch {
+                print("Save error")
+            }
         } else {
             
         }
