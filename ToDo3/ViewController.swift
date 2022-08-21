@@ -25,15 +25,17 @@ class ViewController: UITableViewController {
         getDatas()
     }
     
+    //segue to Add Task Screen (AddViewController)
     @objc func addButtonTapped () {
         selectedTask = ""
         performSegue(withIdentifier: "toAddVC", sender: nil)
     }
     
+    //Notification observer for new data
     override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self, selector: #selector(getDatas), name: NSNotification.Name(rawValue: "dataSaved"), object: nil)
     }
-    
+    //Get datas from database (coredata)
     @objc func getDatas(){
         
         tasks.removeAll(keepingCapacity: false)
@@ -47,7 +49,7 @@ class ViewController: UITableViewController {
         
         fetchRequest.returnsObjectsAsFaults = false
         
-        do{
+        do {
             let results = try context.fetch(fetchRequest)
             
             for result in results as! [NSManagedObject] {
@@ -65,11 +67,12 @@ class ViewController: UITableViewController {
     }
     
     
-    
+    //number of tableView cell
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tasks.count
     }
-
+    
+    //tableView cell content
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
@@ -78,6 +81,7 @@ class ViewController: UITableViewController {
         return cell
     }
     
+    //Control and data transfer from ViewController to AddViewController
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

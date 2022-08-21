@@ -25,7 +25,7 @@ class AddViewController: UIViewController {
         super.viewDidLoad()
         
         addTextViewProperties(textView: addTextView)
-        
+        //Checks if it comes from the tableView or the add button
         if incomingTask != "" {
             addTextView.text = incomingTask
             addTextView.isOpaque = false
@@ -42,7 +42,7 @@ class AddViewController: UIViewController {
         
         
     }
-    
+    //Text View properties
     func addTextViewProperties(textView: UITextView){
         
         textView.layer.masksToBounds = true
@@ -53,7 +53,7 @@ class AddViewController: UIViewController {
         textView.dataDetectorTypes = .all
         textView.isEditable = true
     }
-    
+    //Gesture Recognizer for close keyboard
     @objc func gestureForCloseKeyboard(){
         view.endEditing(true)
     }
@@ -67,6 +67,7 @@ class AddViewController: UIViewController {
         
         let task = NSEntityDescription.insertNewObject(forEntityName: "TaskEntity", into: context)
         
+        //if textView is empty, dont save
         if addTextView.text != "" {
             task.setValue(addTextView.text, forKey: "taskValue")
             task.setValue(UUID(), forKey: "id")
