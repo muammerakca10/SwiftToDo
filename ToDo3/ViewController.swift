@@ -16,7 +16,7 @@ class ViewController: UITableViewController {
     var selectedTask = ""
     var selectedUUID : UUID?
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -100,6 +100,44 @@ class ViewController: UITableViewController {
         
         performSegue(withIdentifier: "toAddVC", sender: nil)
     }
-
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "TaskEntity")
+            fetchRequest.returnsObjectsAsFaults = false
+            let uuidString = ids[indexPath.row].uuidString
+            
+            fetchRequest.predicate = NSPredicate(format: "id = %@", uuidString)
+            
+            do {
+                let results = try context.fetch(fetchRequest)
+                if results.count > 0 {
+                    for result in results as! [NSManagedObject] {
+                        if let id = result.value(forKey: "id") as? UUID {
+                            if id == ids[indexPath.row] {
+                                context.delete(result)
+                                tasks.remove(at: indexPath.row)
+                                ids.remove(at: indexPath.row)
+                                self.tableView.reloadData()
+                                
+                                do{
+                                    try context.save()
+                                } catch {
+                                    print("Error")
+                                }
+                                break
+                            }
+                        }
+                    }
+                }
+            } catch {
+                print("Error")
+            }
+            
+        }
+    }
+    
 }
 
